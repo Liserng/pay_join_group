@@ -300,6 +300,12 @@ class Index
 
         $res = Db::name("setting")->where("vkey","vmq")->find();
         $array['vmq']=$res['vvalue'];
+        
+        $res = Db::name("setting")->where("vkey","qunnum")->find();
+        $array['qunnum']=$res['vvalue'];
+        
+        $res = Db::name("setting")->where("vkey","qunlink")->find();
+        $array['qunlink']=$res['vvalue'];
 
         return json($this->getReturn(1,"成功",$array));
 
@@ -315,6 +321,8 @@ class Index
         $res = Db::name("setting")->where("vkey","user")->update(array("vvalue"=>input("user")));
         $res = Db::name("setting")->where("vkey","pass")->update(array("vvalue"=>input("pass")));
         $res = Db::name("setting")->where("vkey","vmq")->update(array("vvalue"=>input("vmq")));
+        $res = Db::name("setting")->where("vkey","qunnum")->update(array("vvalue"=>input("qunnum")));
+        $res = Db::name("setting")->where("vkey","qunlink")->update(array("vvalue"=>input("qunlink")));
 
         return $this->getReturn();
     }

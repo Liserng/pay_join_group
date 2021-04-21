@@ -16,6 +16,18 @@
 		</div>
 	</div>
 	<div class="layui-form-item">
+		<label class="layui-form-label">QQ群号码</label>
+		<div class="layui-input-block">
+			<input type="text" id="qun-number" lay-verify="required" placeholder="请输入QQ群号码" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">QQ群链接</label>
+		<div class="layui-input-block">
+			<input type="text" id="qun-link" lay-verify="required" placeholder="请输入QQ群链接" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
 		<label class="layui-form-label">v免签配置</label>
 		<div class="layui-input-block">
 			<input type="text" id="vmq" lay-verify="required" placeholder="请输入v免签配置" autocomplete="off" class="layui-input">
@@ -76,6 +88,16 @@
 			layer.msg("请输入v免签配置");
 			return;
 		}
+		var qunlink =$('#qun-link').val();
+        if (qunlink == ""){
+            layer.msg("请输入QQ群链接");
+            return;
+        }
+        var qunnum =$('#qun-number').val();
+        if (qunnum == ""){
+            layer.msg("请输入QQ群号码");
+            return;
+        }
 
 
 
@@ -83,7 +105,7 @@
         var gg =$('#gg').val();
 
 
-		var post = "name="+name+"&gg="+encodeURIComponent(gg)+"&user="+user+"&pass="+pass+"&vmq="+vmq;
+		var post = "name="+name+"&gg="+encodeURIComponent(gg)+"&user="+user+"&pass="+pass+"&vmq="+vmq+"&qunnum="+qunnum+"&qunlink="+qunlink;
 
         $.post("admin/saveSetting",post,function (data) {
             layer.msg(data.msg);
@@ -105,6 +127,8 @@
             $('#user').val(data.data.user);
 			$('#pass').val(data.data.pass);
 			$('#vmq').val(data.data.vmq);
+			$('#qun-number').val(data.data.qunnum);
+			$('#qun-link').val(data.data.qunlink);
 
             layeditindex = layedit.build('gg',{
                 tool: [

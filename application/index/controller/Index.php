@@ -133,11 +133,15 @@ class Index
     public function getWebConfig(){
         $gg = Db::name("setting")->where("vkey","gg")->find();
         $name = Db::name("setting")->where("vkey","name")->find();
+        $qunlink = Db::name("setting")->where("vkey","qunlink")->find();
+        $qunnum = Db::name("setting")->where("vkey","qunnum")->find();
 
 
         return $this->getReturn(1,"登录成功",array(
             "gg"=>$gg['vvalue'],
             "name"=>$name['vvalue'],
+            "qunlink"=>$qunlink['vvalue'],
+            "qunnum"=>$qunnum['vvalue'],
         ));
 
     }
