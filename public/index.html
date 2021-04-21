@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title id="name">载入中...</title>
+		<!--<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />-->
+		<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<style>
+			img.logo{width:14px;height:14px;margin:0 5px 0 3px;}
+			body{
+			background:#ecedf0 url("image/bj.png") fixed;
+			background-repeat:repeat;}
+			.panel{
+			    border-radius: 15px;
+			    margin-bottom: 30px;
+			    box-shadow: 0 0 14px #bdbdbd;
+			    overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light">
+		    <div class="container">
+		    
+  <a id="website-name" class="navbar-brand mb-0 h1" href="#">载入中...</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">页面1<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">页面2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">页面3</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+		<div class="container" style="margin-top:40px;">
+		    	<div class="">
+
+
+
+			<div class="panel panel-info">
+				<div class="list-group-item reed" style="background:#5a5a5a;">
+					<h3 class="panel-title">
+						<font color="#fff"><i class="fa fa-volume-up"></i>&nbsp;&nbsp;<b>站点公告</b></font>
+					</h3>
+				</div>
+				<div style="padding: 10px;background:#fff;" id="notice">
+					载入中...
+				</div>
+			</div>
+
+
+			<div class="panel panel-info">
+				<div class="list-group-item reed" style="background:#fff;">
+					<h3 class="panel-title">
+						<font color="#000"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;<b>自助入群</b></font>
+					</h3>
+				</div>
+
+				<div class="list-group-item">
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+                                <span class="input-group-text">选择分类</span>
+                            </div>
+							<select name="shopType" id="shopType" class="custom-select" onchange="getShop()">
+								<option value="0">请选择分类</option>
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+                                <span class="input-group-text">选择商品</span>
+                            </div>
+							<select name="shop" id="shop" class="custom-select" onchange="getPoint();">
+								<option value="-1">请选择商品</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+                                <span class="input-group-text">商品价格</span>
+                            </div>
+							<input type="text" name="money" id="money" class="form-control" disabled value="￥0.00"/>
+						</div>
+					</div>
+					<div class="form-group" style="display:none;">
+						<div class="input-group">
+							<div class="input-group-prepend">
+                                <span class="input-group-text">购买数量</span>
+                            </div>
+							<input type="number" name="num" id="num" class="form-control" value="1" oninput="getPoint()" disabled=""/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+                                <span class="input-group-text" id="inputname">Q Q 号码</span>
+                            </div>
+							<input type="text" name="qq" id="qq" value="" class="form-control" required placeholder="请输入你本人的QQ号" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+                                <span class="input-group-text" id="inputname">重复输入</span>
+                            </div>
+							<input type="text" name="qq2" id="qq2" value="" class="form-control" required placeholder="请再次输入你本人的QQ号" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+                                <span class="input-group-text">支付方式</span>
+                            </div>
+							<select name="shop" id="paytype" class="custom-select">
+								<option value="0">请选择支付方式</option>
+								<option value="1">微信</option>
+								<option value="2">支付宝/花呗</option>
+
+							</select>
+						</div>
+					</div>
+
+
+					<div class="alert alert-success" id="shopkc" style="display: none;"></div>
+					<div class="alert alert-primary" id="shoptext" style="display: none;"></div>
+
+
+					<input type="submit" onclick="buy()" id="submit_buy" class="btn btn-primary btn-block" value="立即购买">
+
+
+
+				</div>
+
+			</div>
+
+
+			<div class="panel panel-info">
+				<div class="list-group-item reed" style="background:#fff;">
+					<h3 class="panel-title">
+						<font color="#000"><i class="fa fa-search"></i>&nbsp;&nbsp;<b>订单查询</b></font>
+					</h3>
+				</div>
+
+				<div class="list-group-item">
+
+					<div class="alert alert-primary">仅支持查询已支付且未进群的订单！</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+                                <span class="input-group-text">Q Q 号码</span>
+                            </div>
+							<input type="text" name="qq" id="qq3" value="" class="form-control" placeholder="请输入下单时的QQ号"
+							 required />
+						</div>
+					</div>
+					
+					<input type="submit" id="submit_query" class="btn btn-primary btn-block" value="立即查询" onclick="cxo()">
+
+					<br>
+					<div id="olist">
+
+					</div>
+
+				</div>
+
+	<a class="text-decoration-none" href="#">
+			<button type="button" class="btn btn-primary btn-block" style="border-radius:0;">点击加入官方QQ群<br/>XXXXXXXXX</button>
+			</a>
+
+			</div>
+		
+
+
+			<p style="text-align:center">Copyright © 2013 - 2020 XXX All rights reserved.</p>
+		</div>
+		    
+		</div>
+		
+	
+
+		<script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<!--<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+		<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+		<script src="//cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
+		<script>
+			$.post("getWebConfig",function (data) {
+				$("#notice").html(data.data.gg);
+				$("#name").html(data.data.name);
+				$("#website-name").html(data.data.name);
+
+
+
+			});
+            $.post("getShopType",function (data) {
+                for (var i = 0;i<data.data.length;i++){
+                    $("#shopType").append('<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>');
+				}
+            });
+
+            var shopList = [];
+
+            function getShop() {
+                $.post("getShop","typeId="+$("#shopType").val(),function (data) {
+                    $("#shop").html('<option value="-1">请选择商品</option>');
+                    for (var i = 0;i<data.data.length;i++){
+                        $("#shop").append('<option value="'+i+'">'+data.data[i].shopname+'</option>');
+                    }
+                    shopList = data.data;
+                });
+            }
+
+            function getPoint() {
+                if ($("#shop").val() == -1){
+                    return;
+				}
+				$("#money").val("￥"+shopList[$("#shop").val()].money*$("#num").val())
+
+				$("#shoptext").html(shopList[$("#shop").val()].shoptext)
+				$("#shoptext").show()
+				// $("#shopkc").html("库存："+shopList[$("#shop").val()].kucun)
+				// $("#shopkc").show()
+
+
+			}
+
+
+            function buy() {
+				var shop = $("#shop").val();
+
+				var num = $("#num").val();
+				var qq = $("#qq").val();
+				var qq2 = $("#qq2").val();
+				var paytype = $("#paytype").val();
+				if (shop==-1){
+					layer.msg("请选择商品");
+					return;
+				}
+				var shopid = shopList[shop].id;
+
+				if (num<1){
+					layer.msg("请输入正确的购买数量")
+					return;
+				}
+				if (qq==""){
+					layer.msg("请输入QQ号")
+					return;
+				}
+				if (qq2!=qq){
+					layer.msg("两次输入的QQ号不一致")
+					return;
+				}
+				if (paytype==0){
+					layer.msg("请选择支付方式")
+					return;
+				}
+				layer.msg('购买中', {
+					icon: 16
+					,shade: 0.01
+					,time:0
+				});
+				$.post("buy","shopid="+shopid+"&num="+num+"&qq="+qq+"&paytype="+paytype,function (data) {
+					if (data.code==1){
+						window.location.href=data.data
+					} else{
+						layer.msg(data.msg)
+					}
+				});
+
+
+			}
+			function getQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null)
+					return decodeURI(r[2]);
+				return null;
+			}
+			if (getQueryString("orderId")!=null) {
+				layer.msg('查询支付结果中', {
+					icon: 16
+					,shade: 0.01
+					,time:0
+				});
+				$.post("getOrderById","id="+getQueryString("orderId")+"&sign="+getQueryString("sign"),function (data) {
+					layer.closeAll();
+					if (data.code==1){
+						layer.prompt({title: '购买成功，以下是您的卡密信息', formType: 2,value:data.data}, function(text, index){
+							layer.close(index);
+
+						});
+					}
+				});
+			}
+			function cxo() {
+				var qq = $("#qq3").val();
+				if (qq==""){
+					layer.msg("请输入联系方式");
+					return;
+				}
+
+				$.post("getOrderByQQ","qq="+qq,function (data) {
+					$("#olist").html("");
+
+					if (data.code==1){
+						for (var i =0;i<data.data.length;i++){
+							$("#olist").append('<div class="panel panel-info" style="padding:10px;">\n' +
+									'<div class="panel-heading">\n' +
+									'<h4 class="panel-title">['+data.data[i].date+"] "+data.data[i].shopname+'</h4>\n' +
+									'</div>\n' +
+									'<div class="panel-body">\n' +
+									data.data[i].cards +
+									'</div>\n' +
+									'</div>')
+						}
+					}
+					layer.msg(data.msg)
+				});
+			}
+
+		</script>
+
+	</body>
+</html>
