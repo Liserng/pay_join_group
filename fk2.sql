@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- 主机： localhost
--- 生成日期： 2019-05-06 03:08:57
--- 服务器版本： 5.5.53
--- PHP 版本： 5.6.27
+-- Host: localhost
+-- Generation Time: 2021-04-21 16:31:00
+-- 服务器版本： 5.6.44-log
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `vfkphp`
+-- Database: `fk2`
 --
 
 -- --------------------------------------------------------
@@ -54,7 +54,7 @@ CREATE TABLE `orders` (
   `paytype` varchar(256) NOT NULL COMMENT '支付方式',
   `num` int(11) NOT NULL COMMENT '数量',
   `money` double NOT NULL COMMENT '售价',
-  `state` int(11) NOT NULL COMMENT '订单状态 -1过期 0待支付 1完成'
+  `state` int(11) NOT NULL COMMENT '订单状态 -1过期 0待支付 1已支付 2已入群'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -73,9 +73,9 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`vkey`, `vvalue`) VALUES
-('gg', '<p><b>v发卡，开源发卡系统！</b></p>'),
+('gg', 'QQ付费入群系统，开源系统'),
 ('vmq', ''),
-('name', 'v 发卡'),
+('name', 'QQ付费入群系统'),
 ('user', 'admin'),
 ('pass', 'admin');
 
@@ -97,6 +97,13 @@ CREATE TABLE `shop` (
   `state` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `shop`
+--
+
+INSERT INTO `shop` (`id`, `typeid`, `typename`, `shopname`, `shoptext`, `xiaoliang`, `kucun`, `money`, `state`) VALUES
+(1, 1, '付费入群授权', '付费入群授权', '<p><span>请填写需要加群的</span><span><b>本人</b></span><span>QQ号</span><span><b>（非群号）</b></span></p>', 0, 0, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -109,35 +116,42 @@ CREATE TABLE `shoptype` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 转储表的索引
+-- 转存表中的数据 `shoptype`
+--
+
+INSERT INTO `shoptype` (`id`, `name`) VALUES
+(1, '付费入群授权');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- 表的索引 `cards`
+-- Indexes for table `cards`
 --
 ALTER TABLE `cards`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `setting`
+-- Indexes for table `setting`
 --
 ALTER TABLE `setting`
   ADD PRIMARY KEY (`vkey`);
 
 --
--- 表的索引 `shop`
+-- Indexes for table `shop`
 --
 ALTER TABLE `shop`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `shoptype`
+-- Indexes for table `shoptype`
 --
 ALTER TABLE `shoptype`
   ADD PRIMARY KEY (`id`);
@@ -162,13 +176,13 @@ ALTER TABLE `orders`
 -- 使用表AUTO_INCREMENT `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用表AUTO_INCREMENT `shoptype`
 --
 ALTER TABLE `shoptype`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
