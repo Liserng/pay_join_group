@@ -181,8 +181,8 @@
 
 				</div>
 
-	<a class="text-decoration-none" href="#">
-			<button type="button" class="btn btn-primary btn-block" style="border-radius:0;">点击加入官方QQ群<br/>XXXXXXXXX</button>
+	<a id="qun-link" class="text-decoration-none" href="#">
+			<button type="button" class="btn btn-primary btn-block" style="border-radius:0;">点击加入官方QQ群<br/><span id="qun-number">XXXXXXXXX</span></button>
 			</a>
 
 			</div>
@@ -204,6 +204,7 @@
 			$.post("getWebConfig",function (data) {
 				$("#notice").html(data.data.gg);
 				$("#name").html(data.data.name);
+				$("#website-name").html(data.data.name);
 				$("#website-name").html(data.data.name);
 
 

@@ -15,7 +15,8 @@
             <select id="orderlist_state" lay-filter="orderlist_state">
                 <option value="">不筛选状态</option>
                 <option value="0">待付款</option>
-                <option value="1">成功</option>
+                <option value="1">已付款</option>
+                <option value="2">已入群</option>
                 <option value="-1">过期</option>
 
             </select>
@@ -93,7 +94,9 @@
                             if (d.state==0){
                                 return "待付款";
                             }else if (d.state==1){
-                                return "成功";
+                                return "已付款";
+                            }else if (d.state==2){
+                                return "已入群";
                             }else if (d.state==-1){
                                 return "过期";
                             }
