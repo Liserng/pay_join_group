@@ -182,14 +182,14 @@
 				</div>
 
 	<a id="qun-link" class="text-decoration-none" href="#">
-			<button type="button" class="btn btn-primary btn-block" style="border-radius:0;">点击加入官方QQ群<br/><span id="qun-number">XXXXXXXXX</span></button>
+			<button type="button" class="btn btn-primary btn-block" style="border-radius:0;">点击加入QQ群<br/><span id="qun-number"></span></button>
 			</a>
 
 			</div>
 		
 
 
-			<p style="text-align:center">Copyright © 2013 - 2020 XXX All rights reserved.</p>
+			<p style="text-align:center">Copyright © 2021 <span id="footer-name"></span> All rights reserved.</p>
 		</div>
 		    
 		</div>
@@ -205,7 +205,10 @@
 				$("#notice").html(data.data.gg);
 				$("#name").html(data.data.name);
 				$("#website-name").html(data.data.name);
-				$("#website-name").html(data.data.name);
+				$("#qun-number").html(data.data.qunnum);
+				$("#footer-name").html(data.data.name);
+				$("#qun-link").prop("href",data.data.qunlink);
+				
 
 
 
